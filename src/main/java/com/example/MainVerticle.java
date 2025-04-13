@@ -14,13 +14,10 @@ public class MainVerticle extends AbstractVerticle {
   @Override
   public void start() {
     Router router = Router.router(vertx);
-
-    // Route mặc định
     router.get("/").handler(ctx -> {
       ctx.response().end("Hello world from Vert.x in home page");
     });
 
-    // Route trả thời gian hiện tại
     router.get("/api/time").handler(ctx -> {
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
       String now = LocalDateTime.now().format(formatter);
